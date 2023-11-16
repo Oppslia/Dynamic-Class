@@ -43,12 +43,15 @@ class TermPaper:
         return listAttributes
 
 #----------------------------------------- Functions
+
+counter = 1 # Number used to dynamically name object instances t1, t2, t3, ect.
 def createTerm():
+    global counter # Makes counter variable global so that it can be changed
     termPapers[f"t{counter}"] = TermPaper() # Creates term paper objects dynamically and adds them to a Dictonary
     print(f"Term t{counter} created")
-    counter += 1 # Number used to dynamically name object instances t1, t2, t3, ect.
+    counter += 1 
 #---------------------------------
-def nicePrint2(attrValue):
+def nicePrint2(attrValue): # Dynamic print statement
     for i in range(len(attrValue.getStudent())):  # Assuming all lists have the same length iterate through each "student"
         attributesStr = "" # Assigns an empty string to have values added to it
         for attrName, attributeValue in vars(attrValue).items(): # Iterates through a dictonary of the specific class instance
@@ -74,7 +77,7 @@ def processOutput():
 
 attributeList = [] # Dynamic list
 termPapers = {} # Dynamic dictonary holding class instances
-counter = 1 # Counter used to automatically name termpapers with increments to avoid overwriting
+ # Counter used to automatically name termpapers with increments to avoid overwriting
 while True:
     termChoice = input("Pick or create a term ").lower()
     if termChoice == "create":
@@ -111,7 +114,7 @@ while True:
                             processOutput()
                         elif decision == "q":
                             break
-            
+                break
     else:
         print("Please enter a valid input")
 
